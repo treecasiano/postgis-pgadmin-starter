@@ -4,13 +4,19 @@
 
 The starter dump file uses some data from the SQL for Data Analytics book (authors Jun Shan, Matt Goldwasser, Upom Malik, Benjamin Johnston) I've been studying. I created a `docker-compose.yml` file that includes the configuration for PostGIS and PgAdmin along with a few bash scripts for convenience. The book authors provided a link to a file called `data.dump`, which I renamed to `dump.sql` to follow conventions I use elsewhere.
 
-## Local Dev Config
+### Starting and Stopping the Container
+
+To start:  ```docker-compose up```
+
+To shut down: ```docker-compose down```
+
+## pgAdmin
 
 Once Docker works its magic and all the services are spun up correctly, PgAdmin can be found by going to `http://localhost:5050/browser/`. Login with credentials specific to PGAdmin in the `docker-compose.yml` file.
 
-To retrieve the IP address that you need to use in PgAdmin's server configuration, run `bin/get-ip.sh`.
+To retrieve the IP address that you need to use in PgAdmin's server configuration, run `bin/get-ip.sh`. You will need to have `jq` installed as a global node package (see below).
 
-Because this just a playground with fake data, the password is just `admin` for the `pgadmin4@pgadmin.org` login and `pass` for the `postgres` user login. (`postgres` is the default database user.) Obviously, do not use this user or password in production environments.
+Because this just a playground with fake data, the password is `admin` for the `pgadmin4@pgadmin.org` login and `pass` for the `postgres` user login. (`postgres` is the default database user.) Obviously, do not use this user or password in production environments.
 
 ### jq
 
@@ -56,4 +62,4 @@ From there you will be able to see the database(s) using the `\l` command. The l
 
 **TODO:**
 
-- Add a spatial dataset
+- Add a sample spatial dataset

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgresql:
+    container_name: sqlda-container
+    image: 'postgis/postgis:latest'
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: sqlda
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  pgadmin:
+    container_name: pgadmin-container
+    image: dpage/pgadmin4
+    depends_on: 
+      - postgresql
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "5050:80"
+
+volumes:
+    pgadmin:      

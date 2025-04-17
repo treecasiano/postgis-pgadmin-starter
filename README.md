@@ -62,4 +62,4 @@ From there you will be able to see the database(s) using the `\l` command. The l
 
 **TODO:**
 
-- Add a sample spatial dataset
+- Add a list of practice queries
